@@ -15,6 +15,10 @@ export const addTodo = (title: string) => {
   });
 };
 
-// console.log(getTodos());
+export const deleteTodo = (id: number) => {
+  return client.delete<Todo>(`/todos/${id}`);
+};
 
-// Add more methods here
+export const updateTodo = (id: number, data: Todo) => {
+  return client.patch<Todo>(`/todos/${id}`, data);
+};
