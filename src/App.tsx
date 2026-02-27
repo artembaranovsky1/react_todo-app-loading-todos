@@ -6,17 +6,17 @@ import Footer from './components/Footer';
 import { TodoList } from './components/TodoList';
 import SearchBar from './components/SearchBar';
 import { ErrorType } from './enums/error';
+import { FilterType } from './enums/FilterType';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [query, setQuery] = useState('');
-  const [sortBy, setSortBy] = useState('');
+  const [sortBy, setSortBy] = useState(FilterType.All);
   const [hasError, setHasError] = useState('');
   const [loading, setLoading] = useState<number[]>([]);
   const [loadingInput, setLoadingInput] = useState<boolean>(false);
   const [tempTodo, setTempTodo] = useState<Todo | null>(null);
 
-  // eslint-disable-next-line max-len
   const [pressButtonToggleAll, setPressButtonToggleAll] = useState(null);
 
   useEffect(() => {

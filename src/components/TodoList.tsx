@@ -3,6 +3,7 @@ import { deleteTodo, updateTodo } from '../api/todos';
 import React, { useEffect, useState } from 'react';
 import changeStatusCompleteTodo from '../service/changeStatus';
 import { ErrorType } from '../enums/error';
+import { FilterType } from '../enums/FilterType';
 
 type Props = {
   todos: Todo[];
@@ -33,11 +34,11 @@ export const TodoList: React.FC<Props> = ({
   const [updatedTitle, setUpdateTitle] = useState<string>('');
 
   function filteredTodos(sortingBy: string): Todo[] {
-    if (sortingBy === 'active') {
+    if (sortingBy === FilterType.ACTIVE) {
       return todos.filter(todo => !todo.completed);
     }
 
-    if (sortingBy === 'completed') {
+    if (sortingBy === FilterType.COMPLETED) {
       return todos.filter(todo => todo.completed);
     }
 
